@@ -4,6 +4,4 @@
 
 ## Get the best advice in your life! Just [ npm install ] and [ npm start ] to run it and listen to its wise words! 
 
-### (No tutorials, S.O. / memory reference code only challenge)
-
 
