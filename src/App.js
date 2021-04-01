@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
 
-function App() {
+const App = () => {
+  let audio = new Audio("/robot.wav");
+  const [answers, setAnswers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const start = () => {
+    audio.play();
+  };
+
+  async function fetchAnswers() {
+    fetch("	https://api.adviceslip.com/advice")
+      .then((response) => response.json())
+      .then((json) => setAnswers((previous) => [json.slip.advice]));
+    setLoading(true);
+    start();
+
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, 4500)
+    );
+    setLoading(false);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <div className="App">
+        <div className="box gradient-border">
+          <h1>Advice-o-Tron 3000</h1>
+          <h6>Click the button to get life-changing advice!</h6>
+          {answers.map((answer, index) => (
+            <div className="answer" key={index}>
+              {answer}
+            </div>
+          ))}
+        </div>
+        <button
+          className="button1 bouncy"
+          onClick={fetchAnswers}
+          disabled={loading}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Get Life Changing Advice
+        </button>
+        <div className="robot">
+          <div className="head"></div>
+          <div className="torso"></div>
+          <div className={loading ? "left-animated" : "left"}></div>
+          <div className="right"></div>
+          <div className={loading ? "eye1-animated" : "eye1"}></div>
+          <div className={loading ? "eye2-animated" : "eye2"}></div>
+          <div className={loading ? "mouth-animated" : "mouth"}></div>
+        </div>
+      </div>
+    </>
   );
-}
+};
 
 export default App;

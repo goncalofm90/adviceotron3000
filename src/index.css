@@ -1,13 +1,330 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Orbitron", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url(./images/space.jpeg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  text-shadow: 0 0 5px #c8c8c8;
+  color: white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.box {
+  background: rgb(36, 35, 35);
+  width: 50%;
+  margin: 1em auto;
+  padding: 5em;
+}
+.gradient-border {
+  --border-width: 3px;
+  position: relative;
+
+  color: white;
+  background: #222;
+  border-radius: var(--border-width);
+}
+.gradient-border::after {
+  position: absolute;
+  content: "";
+  top: calc(-1 * var(--border-width));
+  left: calc(-1 * var(--border-width));
+  z-index: -1;
+  width: calc(100% + var(--border-width) * 2);
+  height: calc(100% + var(--border-width) * 2);
+  background: linear-gradient(
+    60deg,
+    #5f86f2,
+    #a65ff2,
+    #f25fd0,
+    #f25f61,
+    #f2cb5f,
+    #abf25f,
+    #5ff281,
+    #5ff2f0
+  );
+  background-size: 300% 300%;
+  background-position: 0 50%;
+  border-radius: calc(2 * var(--border-width));
+  animation: moveGradient 4s alternate infinite;
+}
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.answer {
+  background: -webkit-linear-gradient(rgb(255, 0, 255), rgb(0, 204, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.button1 {
+  display: inline-block;
+  margin: 1em auto;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid white;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 300px;
+  color: white;
+  text-align: center;
+  transition: all 0.2s;
+  background: transparent;
+}
+.button1:hover {
+  background: rgb(198, 22, 214);
+  cursor: pointer;
+  animation: bouncy 0.5s infinite linear;
+}
+@media all and (max-width: 30em) {
+  .button1 {
+    display: block;
+    margin: 0.4em auto;
+  }
+}
+
+.bouncy {
+  position: relative;
+}
+
+.head {
+  position: absolute;
+  top: 300px;
+  left: 0;
+  right: 0;
+  bottom: 150px;
+  margin: auto;
+  height: 75px;
+  width: 100px;
+  background-color: #2f4353;
+  background-image: linear-gradient(315deg, #2f4353 0%, #2c2c2b 74%);
+  z-index: -1;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.torso {
+  position: absolute;
+  top: 360px;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  margin: auto;
+  height: 120px;
+  width: 115px;
+  background-color: #2f4353;
+  background-image: linear-gradient(315deg, #2f4353 0%, #2c2c2b 74%);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.left-animated {
+  position: absolute;
+  top: 300px;
+  left: 0;
+  right: 230px;
+  bottom: 25px;
+  margin: auto;
+  height: 30px;
+  width: 100px;
+  background-color: #2f4353;
+  background-image: linear-gradient(315deg, #2f4353 0%, #2c2c2b 74%);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  animation: hand 1s linear infinite;
+}
+
+.left {
+  position: absolute;
+  top: 350px;
+  left: 0;
+  right: 150px;
+  bottom: 0px;
+  margin: auto;
+  height: 30px;
+  width: 100px;
+  background-color: #2f4353;
+  background-image: linear-gradient(315deg, #2f4353 0%, #2c2c2b 74%);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transform: rotateZ(90deg);
+}
+
+.right {
+  position: absolute;
+  top: 350px;
+  left: 150px;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 30px;
+  width: 100px;
+  background-color: #2f4353;
+  background-image: linear-gradient(315deg, #2f4353 0%, #2c2c2b 74%);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 50px;
+  transform: rotateZ(90deg);
+}
+
+.eye1 {
+  position: absolute;
+  top: 300px;
+  left: 0;
+  right: 25px;
+  bottom: 150px;
+  margin: auto;
+  background: rgb(118, 20, 209);
+  height: 20px;
+  width: 20px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+.eye1-animated {
+  position: absolute;
+  top: 300px;
+  left: 0;
+  right: 25px;
+  bottom: 150px;
+  margin: auto;
+  background: rgb(118, 20, 209);
+  height: 20px;
+  width: 20px;
+  border: 2px solid black;
+  border-radius: 50%;
+  animation: eyes 0.5s infinite;
+}
+
+.eye2 {
+  position: absolute;
+  top: 300px;
+  left: 25px;
+  right: 0px;
+  bottom: 150px;
+  margin: auto;
+  background: rgb(119, 18, 214);
+  height: 20px;
+  width: 20px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+.eye2-animated {
+  position: absolute;
+  top: 300px;
+  left: 25px;
+  right: 0px;
+  bottom: 150px;
+  margin: auto;
+  background: rgb(118, 20, 209);
+  height: 20px;
+  width: 20px;
+  border: 2px solid black;
+  border-radius: 50%;
+  animation: eyes 0.5s infinite;
+}
+
+.mouth-animated {
+  position: absolute;
+  top: 300px;
+  left: 0px;
+  right: 0px;
+  bottom: 100px;
+  margin: auto;
+  background: white;
+  height: 0px;
+  width: 35px;
+  animation: mouth 0.5s infinite;
+}
+
+.mouth {
+  position: absolute;
+  top: 300px;
+  left: 0px;
+  right: 0px;
+  bottom: 100px;
+  margin: auto;
+  background: rgb(118, 20, 209);
+  height: 4px;
+  width: 35px;
+}
+
+@keyframes hand {
+  0% {
+    transform: translateY(-40px) rotateZ(45deg);
+  }
+  50% {
+    transform: translateY(0) rotateZ(-0);
+  }
+  100% {
+    transform: translateY(-40px) rotateZ(45deg);
+  }
+}
+
+@keyframes mouth {
+  0% {
+    height: 4px;
+    background: rgb(118, 20, 209);
+  }
+  50% {
+    height: 0px;
+    background: rgb(202, 10, 228);
+  }
+  100% {
+    height: 4px;
+    background: rgb(118, 20, 209);
+  }
+}
+
+@keyframes eyes {
+  0% {
+    background: rgb(118, 20, 209);
+  }
+  50% {
+    background: rgb(202, 10, 228);
+  }
+  100% {
+    background: rgb(118, 20, 209);
+  }
+}
+
+@keyframes bouncy {
+  0% {
+    top: 0em;
+  }
+  40% {
+    top: 0em;
+  }
+  40% {
+    padding: 0.5em;
+  }
+  46% {
+    top: 0em;
+  }
+  48% {
+    top: 0.4em;
+  }
+  50% {
+    top: 0em;
+  }
+  100% {
+    top: 0em;
+  }
 }
